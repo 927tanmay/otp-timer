@@ -43,14 +43,17 @@ export default class Otp extends Component {
     clearInterval(this.myInterval);
   }
 
-  handleClick(){
-    this.setState({minutes: this.props.minutes ? this.props.minutes : 0,
-      seconds: this.props.seconds ? this.props.seconds : 30})
+  handleClick() {
+    this.props.resend();
+    this.setState({
+      minutes: this.props.minutes ? this.props.minutes : 0,
+      seconds: this.props.seconds ? this.props.seconds : 30,
+    });
   }
-//   wrapperFunction(e){
-//     this.props.resend;
-//     this.handleClick.bind(this);
-// }
+  //   wrapperFunction(e){
+  //     this.props.resend;
+  //     this.handleClick.bind(this);
+  // }
 
   render() {
     const textStyle = {
