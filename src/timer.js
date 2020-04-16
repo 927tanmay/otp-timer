@@ -43,6 +43,15 @@ export default class Otp extends Component {
     clearInterval(this.myInterval);
   }
 
+  handleClick(){
+    this.setState({minutes: this.props.minutes ? this.props.minutes : 0,
+      seconds: this.props.seconds ? this.props.seconds : 30})
+  }
+//   wrapperFunction(e){
+//     this.props.resend;
+//     this.handleClick.bind(this);
+// }
+
   render() {
     const textStyle = {
       fontSize: "16px",
@@ -62,7 +71,7 @@ export default class Otp extends Component {
     return (
       <div style={textStyle}>
         {this.state.minutes === 0 && this.state.seconds === 0 ? (
-          <button style={buttonStyling} onClick={this.props.resend}>
+          <button style={buttonStyling} onClick={this.handleClick.bind(this)}>
             Resend
           </button>
         ) : (
