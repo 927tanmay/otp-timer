@@ -62,7 +62,9 @@ export default class Otp extends Component {
     return (
       <div style={textStyle}>
         {this.state.minutes === 0 && this.state.seconds === 0 ? (
-          <button style={buttonStyling}>Resend</button>
+          <button style={buttonStyling} onClick={this.props.resend}>
+            Resend
+          </button>
         ) : (
           <span>
             Time left:{" "}
