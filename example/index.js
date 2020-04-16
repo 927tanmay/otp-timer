@@ -1,18 +1,15 @@
-import OtpTimer from '../lib/timer' 
-import ReactDOM from 'react-dom'
-import React, { Component, PropTypes } from 'react'
+import OtpTimer from "../lib/timer";
+import ReactDOM from "react-dom";
+import React, { Component, PropTypes } from "react";
 
 class Example extends Component {
-
-  render () {
-
-    let OPTIONS = {sec: 100, min:0}
+  render() {
     return (
       <div>
-        <OtpTimer options={OPTIONS} />
+        <OtpTimer seconds={10} minutes={0} />
       </div>
-    )
+    );
   }
 }
 
-ReactDOM.render( <Example />, document.getElementById('root') )
+ReactDOM.render(<Example />, document.getElementById("root"));
