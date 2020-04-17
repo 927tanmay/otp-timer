@@ -38,7 +38,7 @@ Functionality:
 | :------------ |:---------------:|:---------------:| -----:|
 | seconds    | number of seconds for which timer must be set | 30 | seconds={20} |
 | minutes      |number of minutes for which the timer must be set| 0        |   minutes={1} |
-| resend | function that woud get triggered on clicking the resend button | n/a      |    resend={function name} |
+| resend | function that would get triggered on clicking the resend button | n/a      |    resend={function name} |
 
 Styling:
 
