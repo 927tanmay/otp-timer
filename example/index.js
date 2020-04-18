@@ -13,8 +13,8 @@ class Example extends Component {
           seconds={2}
           minutes={0}
           resend={this.submit.bind(this)}
-          text="jhjkhhhh"
-          ButtonText="klmlk"
+          text="Time:"
+          ButtonText="Resend"
         />
       </div>
     );
