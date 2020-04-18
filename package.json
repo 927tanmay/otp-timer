@@ -1,6 +1,6 @@
 {
   "name": "otp-timer",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "otp timer component",
   "main": "lib/timer.js",
   "author": "Simran Gupta & Tanmay Sharma",
