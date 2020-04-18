@@ -9,7 +9,13 @@ class Example extends Component {
   render() {
     return (
       <div>
-        <OtpTimer seconds={2} minutes={0} resend={this.submit.bind(this)} />
+        <OtpTimer
+          seconds={2}
+          minutes={0}
+          resend={this.submit.bind(this)}
+          text="jhjkhhhh"
+          ButtonText="klmlk"
+        />
       </div>
     );
   }
