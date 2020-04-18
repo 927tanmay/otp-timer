@@ -16,7 +16,7 @@ export default class Otp extends Component {
       seconds: this.props.seconds ? this.props.seconds : 30,
     };
 
-    this.handleClick=this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -24,7 +24,7 @@ export default class Otp extends Component {
     this.otptimer();
   }
 
-  otptimer(){
+  otptimer() {
     clearInterval(this.myInterval);
     this.myInterval = setInterval(() => {
       const { seconds, minutes } = this.state;
@@ -47,21 +47,18 @@ export default class Otp extends Component {
     }, 1000);
   }
 
-
-
   componentWillUnmount() {
     clearInterval(this.myInterval);
   }
 
   handleClick(event) {
-
     this.setState({
       minutes: this.props.minutes ? this.props.minutes : 0,
       seconds: this.props.seconds ? this.props.seconds : 30,
     });
     this.props.resend();
     this.otptimer();
-    event.preventDefault(); 
+    event.preventDefault();
   }
   //   wrapperFunction(e){
   //     this.props.resend;
@@ -78,7 +75,7 @@ export default class Otp extends Component {
 
     const buttonStyling = {
       border: "none",
-      background: this.props.background ? this.props.background : "#5cb85c",
+      background: this.props.background ? this.props.background : "#0033cc",
       color: this.props.buttonColor ? this.props.buttonColor : "#fff",
       fontSize: "16px",
       lineHeight: "22px",
@@ -88,11 +85,19 @@ export default class Otp extends Component {
       <div style={textStyle}>
         {this.state.minutes === 0 && this.state.seconds === 0 ? (
           <button style={buttonStyling} onClick={this.handleClick}>
-            Resend
+            {this.props.ButtonText ? (
+              <span>{this.props.ButtonText} </span>
+            ) : (
+              <span>Resend</span>
+            )}
           </button>
         ) : (
           <span>
-            Time left:{" "}
+            {this.props.text ? (
+              <span>{this.props.text} </span>
+            ) : (
+              <span>Time left: </span>
+            )}
             {this.state.minutes < 10
               ? `0${this.state.minutes}`
               : this.state.minutes}
