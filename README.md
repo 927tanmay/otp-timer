@@ -49,6 +49,6 @@ Styling:
 | :---------- | :-----------------------------------------: | :-----------: | ---------------------: |
 | textColor   |      describes the timer's text color       |   "#000000"   |  textColor={"#000000"} |
 | buttonColor |      describes the button's text color      |    "#fff"     |   buttonColor={"#fff"} |
-| background  | describe the background color of the button |   "#5cb85c"   | background={"#5cb85c"} |
+| background  | describe the background color of the button |   "#0033cc"   | background={"#0033cc"} |
 
 ---
