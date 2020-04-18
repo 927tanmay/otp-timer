@@ -15,9 +15,17 @@ export default class Otp extends Component {
       minutes: this.props.minutes ? this.props.minutes : 0,
       seconds: this.props.seconds ? this.props.seconds : 30,
     };
+
+    this.handleClick=this.handleClick.bind(this);
   }
 
   componentDidMount() {
+    clearInterval(this.myInterval);
+    this.otptimer();
+  }
+
+  otptimer(){
+    clearInterval(this.myInterval);
     this.myInterval = setInterval(() => {
       const { seconds, minutes } = this.state;
 
@@ -39,16 +47,21 @@ export default class Otp extends Component {
     }, 1000);
   }
 
+
+
   componentWillUnmount() {
     clearInterval(this.myInterval);
   }
 
-  handleClick() {
-    this.props.resend();
+  handleClick(event) {
+
     this.setState({
       minutes: this.props.minutes ? this.props.minutes : 0,
       seconds: this.props.seconds ? this.props.seconds : 30,
     });
+    this.props.resend();
+    this.otptimer();
+    event.preventDefault(); 
   }
   //   wrapperFunction(e){
   //     this.props.resend;
@@ -74,7 +87,7 @@ export default class Otp extends Component {
     return (
       <div style={textStyle}>
         {this.state.minutes === 0 && this.state.seconds === 0 ? (
-          <button style={buttonStyling} onClick={this.handleClick.bind(this)}>
+          <button style={buttonStyling} onClick={this.handleClick}>
             Resend
           </button>
         ) : (
