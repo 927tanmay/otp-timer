@@ -45,10 +45,14 @@ Functionality:
 
 Styling:
 
-| Prop name   |                 Description                 | Default Value |                Example |
-| :---------- | :-----------------------------------------: | :-----------: | ---------------------: |
-| textColor   |      describes the timer's text color       |   "#000000"   |  textColor={"#000000"} |
-| buttonColor |      describes the button's text color      |    "#fff"     |   buttonColor={"#fff"} |
-| background  | describe the background color of the button |   "#0033cc"   | background={"#0033cc"} |
+| Prop name       |                 Description                 | Default Value |             Example             |
+| :-------------- | :-----------------------------------------: | :-----------: | ------------------------------: |
+| textColor       |      describes the timer's text color       |   "#000000"   | textColor={"#000000"}           |
+| buttonColor     |      describes the button's text color      |    "#fff"     | buttonColor={"#fff"}            |
+| background      | describe the background color of the button |   "#0033cc"   | background={"#0033cc"}          |
+| buttonClassName |    describe custom classname for button     |      n/a      | buttonClassName="btnClass"      |
+| buttonStyle     |     describe custome styles for button      |       -       | buttonStyle={{color:"#fff"}}    |
+| timerSpanClass  |   describe custom classname for timerspan   |       -       | timerSpanClass="timerClass"     |
+| timerSpanStyle  |    describe custom styles for timerspan     |       -       | timerSpanStyle={{font:"Inter"}} |
 
 ---
