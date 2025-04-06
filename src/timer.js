@@ -75,6 +75,7 @@ export default class Otp extends Component {
 
     const buttonStyling = {
       border: "none",
+      cursor: "pointer",
       background: this.props.background ? this.props.background : "#0033cc",
       color: this.props.buttonColor ? this.props.buttonColor : "#fff",
       fontSize: "16px",
@@ -84,7 +85,7 @@ export default class Otp extends Component {
     return (
       <div style={textStyle}>
         {this.state.minutes === 0 && this.state.seconds === 0 ? (
-          <button style={buttonStyling} onClick={this.handleClick}>
+          <button style={{...buttonStyling, ...this.props.buttonStyle}} onClick={this.handleClick} className={this.props.buttonClassName}>
             {this.props.ButtonText ? (
               <span>{this.props.ButtonText} </span>
             ) : (
@@ -92,7 +93,7 @@ export default class Otp extends Component {
             )}
           </button>
         ) : (
-          <span>
+          <span className={this.props.timerSpanClass} style={this.props.timerSpanStyle}>
             {this.props.text ? (
               <span>{this.props.text} </span>
             ) : (
