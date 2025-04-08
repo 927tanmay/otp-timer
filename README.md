@@ -59,4 +59,4 @@ Styling:
 
 ## License
 
-MIT © [Simran Gupta](https://github.com/SimranGupta) & [Tanmay Sharma](https://github.com/927tanmay)
+MIT © [Simran Gupta](https://github.com/1209simran) & [Tanmay Sharma](https://github.com/927tanmay)
