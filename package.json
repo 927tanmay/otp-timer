@@ -1,10 +1,10 @@
 {
   "name": "otp-timer",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "otp timer component",
   "main": "lib/timer.js",
   "author": "Simran Gupta & Tanmay Sharma",
-  "license": "",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/927tanmay/otp-timer.git"

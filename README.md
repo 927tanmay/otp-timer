@@ -56,3 +56,7 @@ Styling:
 | timerSpanStyle  |    describe custom styles for timerspan     |       -       | timerSpanStyle={{font:"Inter"}} |
 
 ---
+
+## License
+
+MIT © [Simran Gupta](https://github.com/SimranGupta) & [Tanmay Sharma](https://github.com/927tanmay)
