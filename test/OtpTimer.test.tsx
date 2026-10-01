@@ -44,6 +44,33 @@ describe("OtpTimer", () => {
     expect(screen.getByRole("timer").textContent).toBe("Time left: 00:59");
   });
 
+  it("accepts numeric strings like 2.x did", () => {
+    const props = { minutes: "1", seconds: "30" } as Record<string, unknown>;
+    render(<OtpTimer {...props} />);
+    expect(screen.getByRole("timer").textContent).toBe("Time left: 01:30");
+  });
+
+  it("falls back to defaults for null, empty or invalid numbers", () => {
+    const props = { minutes: null, seconds: null } as Record<string, unknown>;
+    const { rerender } = render(<OtpTimer {...props} />);
+    expect(screen.getByRole("timer").textContent).toBe("Time left: 00:30");
+
+    const bad = { minutes: "", seconds: "abc" } as Record<string, unknown>;
+    rerender(<OtpTimer key="bad" {...bad} />);
+    expect(screen.getByRole("timer").textContent).toBe("Time left: 00:30");
+  });
+
+  it("falls back to default text and colors for empty values like 2.x did", () => {
+    render(<OtpTimer seconds={1} text="" ButtonText="" textColor="" background="" buttonColor="" />);
+    expect(screen.getByRole("timer").textContent).toBe("Time left: 00:01");
+    tick(1);
+    const button = screen.getByRole("button");
+    expect(button.textContent).toBe("Resend");
+    expect(button.style.background).toBe("rgb(0, 51, 204)");
+    expect(button.style.color).toBe("rgb(255, 255, 255)");
+    expect((button.parentElement as HTMLElement).style.color).toBe("rgb(0, 0, 0)");
+  });
+
   it("shows the button immediately for a zero duration", () => {
     render(<OtpTimer minutes={0} seconds={0} />);
     expect(screen.getByRole("button")).toBeTruthy();
@@ -105,7 +132,7 @@ describe("OtpTimer", () => {
       />
     );
     const button = screen.getByRole("button");
-    expect(button.textContent).toBe("Send again");
+    expect(button.textContent).toBe("Send again ");
     expect(button.className).toBe("btn");
     expect(button.style.background).toBe("red");
     expect(button.style.color).toBe("green");

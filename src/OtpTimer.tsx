@@ -30,21 +30,32 @@ export interface OtpTimerProps {
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
+// Matches 2.x for JS callers: numeric strings ("30") work, and null, "" or
+// non-numeric values fall back to the default. Unlike 2.x, 0 means 0.
+const toNumber = (value: unknown, fallback: number) => {
+  if (value === null || value === undefined || value === "") return fallback;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : fallback;
+};
+
 export function OtpTimer({
-  minutes = 0,
-  seconds = 30,
+  minutes,
+  seconds,
   resend,
-  text = "Time left:",
-  ButtonText = "Resend",
-  textColor = "#000000",
-  buttonColor = "#fff",
-  background = "#0033cc",
+  text,
+  ButtonText,
+  textColor,
+  buttonColor,
+  background,
   buttonClassName,
   buttonStyle,
   timerSpanClass,
   timerSpanStyle,
 }: OtpTimerProps) {
-  const total = Math.max(0, Math.floor(minutes * 60 + seconds));
+  const total = Math.max(
+    0,
+    Math.floor(toNumber(minutes, 0) * 60 + toNumber(seconds, 30))
+  );
   const [remaining, setRemaining] = useState(total);
   // Bumped on every resend to restart the countdown effect.
   const [cycle, setCycle] = useState(0);
@@ -74,18 +85,19 @@ export function OtpTimer({
     setCycle((c) => c + 1);
   };
 
+  // Text and color props fall back on any falsy value, as in 2.x.
   const textStyle: CSSProperties = {
     fontSize: "16px",
     fontFamily: "Roboto",
     lineHeight: "22px",
-    color: textColor,
+    color: textColor || "#000000",
   };
 
   const buttonStyling: CSSProperties = {
     border: "none",
     cursor: "pointer",
-    background,
-    color: buttonColor,
+    background: background || "#0033cc",
+    color: buttonColor || "#fff",
     fontSize: "16px",
     lineHeight: "22px",
     ...buttonStyle,
@@ -100,11 +112,11 @@ export function OtpTimer({
           onClick={handleClick}
           className={buttonClassName}
         >
-          <span>{ButtonText}</span>
+          {ButtonText ? <span>{ButtonText} </span> : <span>Resend</span>}
         </button>
       ) : (
         <span role="timer" className={timerSpanClass} style={timerSpanStyle}>
-          <span>{text} </span>
+          <span>{text || "Time left:"} </span>
           {pad(Math.floor(remaining / 60))}:{pad(remaining % 60)}
         </span>
       )}

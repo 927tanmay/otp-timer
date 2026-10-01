@@ -12,6 +12,7 @@
   "bugs": {
     "url": "https://github.com/927tanmay/otp-timer/issues"
   },
+  "type": "commonjs",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
