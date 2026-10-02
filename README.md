@@ -1,61 +1,78 @@
 # otp-timer
 
-## Install
+[![npm](https://img.shields.io/npm/v/otp-timer)](https://www.npmjs.com/package/otp-timer)
+[![CI](https://github.com/927tanmay/otp-timer/actions/workflows/ci.yml/badge.svg)](https://github.com/927tanmay/otp-timer/actions/workflows/ci.yml)
+[![license](https://img.shields.io/npm/l/otp-timer)](./LICENSE)
 
-Install by executing either `npm install otp-timer` or `yarn add otp-timer`
+A tiny React countdown timer for OTP screens. It counts down, then swaps itself for a **Resend** button that restarts the timer.
+
+- Works with React 16.8 through 19
+- Zero dependencies, ~2 KB
+- TypeScript types included
+- ESM and CommonJS builds
 
 ## Demo
 
-[react-otp-timer](https://react-otp-timer.herokuapp.com/ "react-otp-timer")
+[927tanmay.github.io/otp-timer](https://927tanmay.github.io/otp-timer/)
 
-## Usage?
+## Install
 
+```bash
+npm install otp-timer
 ```
-import OtpTimer from 'otp-timer'
-import React, { Component } from "react";
 
- handleClick=()=>{
-   //desired function to be performed on clicking resend button
- }
+## Usage
 
-export default  class Otp extends Component {
-  render () {
-    return (
-      <div>
-        <Timer seconds= {30} minutes={0} resend={this.handleClick} />
-      </div>
-    )
-  }
+```jsx
+import OtpTimer from "otp-timer";
+
+export default function VerifyOtp() {
+  const handleResend = () => {
+    // request a new OTP here
+  };
+
+  return <OtpTimer minutes={1} seconds={0} resend={handleResend} />;
 }
-
-
 ```
 
-## User Guide?
+A named export is also available: `import { OtpTimer } from "otp-timer"`.
 
-Functionality:
+## Props
 
-| Prop name  |                           Description                           | Default Value |                Example |
-| :--------- | :-------------------------------------------------------------: | :-----------: | ---------------------: |
-| seconds    |          number of seconds for which timer must be set          |      30       |           seconds={20} |
-| minutes    |        number of minutes for which the timer must be set        |       0       |            minutes={1} |
-| resend     | function that would get triggered on clicking the resend button |      n/a      | resend={function name} |
-| text       |                content that you want to put down                |  Time Left :  |       text="Time Left" |
-| ButtonText |                         button content                          |    Resend     |    ButtonText="Resend" |
+### Behaviour
 
-Styling:
+| Prop         | Description                                                    | Default        | Example                     |
+| :----------- | :------------------------------------------------------------- | :------------- | :-------------------------- |
+| `minutes`    | Minutes to count down from                                     | `0`            | `minutes={1}`               |
+| `seconds`    | Seconds to count down from (values over 59 roll into minutes)  | `30`           | `seconds={20}`              |
+| `resend`     | Called when the resend button is clicked; the timer restarts   | –              | `resend={handleResend}`     |
+| `text`       | Label shown before the countdown                               | `"Time left:"` | `text="Code expires in"`    |
+| `ButtonText` | Resend button content                                          | `"Resend"`     | `ButtonText="Send again"`   |
 
-| Prop name       |                 Description                 | Default Value |             Example             |
-| :-------------- | :-----------------------------------------: | :-----------: | ------------------------------: |
-| textColor       |      describes the timer's text color       |   "#000000"   | textColor={"#000000"}           |
-| buttonColor     |      describes the button's text color      |    "#fff"     | buttonColor={"#fff"}            |
-| background      | describe the background color of the button |   "#0033cc"   | background={"#0033cc"}          |
-| buttonClassName |    describe custom classname for button     |      n/a      | buttonClassName="btnClass"      |
-| buttonStyle     |     describe custome styles for button      |       -       | buttonStyle={{color:"#fff"}}    |
-| timerSpanClass  |   describe custom classname for timerspan   |       -       | timerSpanClass="timerClass"     |
-| timerSpanStyle  |    describe custom styles for timerspan     |       -       | timerSpanStyle={{font:"Inter"}} |
+### Styling
 
----
+| Prop              | Description                     | Default     | Example                            |
+| :---------------- | :------------------------------ | :---------- | :--------------------------------- |
+| `textColor`       | Timer text color                | `"#000000"` | `textColor="#333"`                 |
+| `buttonColor`     | Resend button text color        | `"#fff"`    | `buttonColor="#fff"`               |
+| `background`      | Resend button background color  | `"#0033cc"` | `background="#0033cc"`             |
+| `buttonClassName` | Class name for the button       | –           | `buttonClassName="btn"`            |
+| `buttonStyle`     | Inline styles for the button    | –           | `buttonStyle={{ padding: 8 }}`     |
+| `timerSpanClass`  | Class name for the timer text   | –           | `timerSpanClass="timer"`           |
+| `timerSpanStyle`  | Inline styles for the timer text| –           | `timerSpanStyle={{ fontWeight: 600 }}` |
+
+## Upgrading from v2
+
+See [CHANGELOG.md](./CHANGELOG.md#300). For most apps, no code changes are needed.
+
+## Development
+
+```bash
+npm install
+npm run dev     # example app at http://localhost:5173
+npm test
+npm run build
+```
 
 ## License
 
